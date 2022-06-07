@@ -1,0 +1,142 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+import java.lang.Thread;
+
+
+public class first {
+
+
+
+    public static void main(String[] args) {
+
+
+
+        System.setProperty("webdriver.chrome.driver", "C:/Users/sush1/OneDrive/Documents/selenium_pro/chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+
+
+
+        driver.get("https://auth.geeksforgeeks.org/");
+        driver.findElement(By.id("luser")).sendKeys("sush123sri@gmail.com");
+        driver.findElement(By.id("password")).sendKeys("sushsri1");
+        driver.findElement(By.className("btn-green")).click();
+        System.out.println(driver.findElement(By.cssSelector("div.alert-danger")).getText());
+        driver.findElement(By.linkText("Forgot Password")).click();
+
+        driver.findElement(By.id("fuser")).sendKeys("sushmitasrivastava");
+        driver.findElement(By.cssSelector("div.recaptcha-checkbox-border")).click();
+        //driver.findElement(By.className("btn")).click();
+
+
+
+        //System.out.println(driver.getTitle());
+
+        //System.out.println(driver.getCurrentUrl());
+
+
+
+//driver.quit();
+
+
+
+    }
+
+
+
+}
+
+//
+
+import java.time.Duration;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+
+
+
+
+public class code {
+
+
+
+    public static void main(String[] args) throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver", "C:/Users/sush1/OneDrive/Documents/selenium_pro/chromedriver.exe");
+
+// TODO Auto-generated method stub
+
+//implicit wait - 2 seconds time out
+
+
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        driver.get("https://rahulshettyacademy.com/locatorspractice/");
+
+        driver.findElement(By.id("inputUsername")).sendKeys("rahul");
+
+        driver.findElement(By.name("inputPassword")).sendKeys("hello123");
+
+        driver.findElement(By.className("signInBtn")).click();
+
+        System.out.println(driver.findElement(By.cssSelector("p.error")).getText());
+
+        driver.findElement(By.linkText("Forgot your password?")).click();
+
+        Thread.sleep(1000);//
+
+        driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("John");
+
+        driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("john@rsa.com");
+
+        driver.findElement(By.xpath("//input[@type='text'][2]")).clear();
+
+        driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("john@gmail.com");
+
+        driver.findElement(By.xpath("//form/input[3]")).sendKeys("9864353253");
+
+        driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+
+        System.out.println(driver.findElement(By.cssSelector("form p")).getText());
+
+        driver.findElement(By.xpath("//div[@class='forgot-pwd-btn-conainer']/button[1]")).click();
+
+        Thread.sleep(1000);
+
+        driver.findElement(By.cssSelector("#inputUsername")).sendKeys("rahul");
+
+        driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
+
+        driver.findElement(By.id("chkboxOne")).click();
+
+        driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
+        Thread.sleep(2000);
+        System.out.println(driver.findElement(By.tagName("p")).getText());
+        Assert.assertEquals(driver.findElement(By.tagName("p")).getText(),"You are successfully logged in.");
+
+    }
+
+
+
+}
+
+
+
+
+
+
